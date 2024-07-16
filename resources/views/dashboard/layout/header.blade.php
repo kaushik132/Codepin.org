@@ -21,11 +21,24 @@
           
           <meta property="og:title" content="{{$seo_data['seo_title']}}">
     <meta property="og:site_name" content="Codepin">
-    <meta property="og:url" content="{{ config('app.url') }}">
+
+    @if(isset($canocial))
+    <meta property="og:url" content="{{$canocial}}">
+    @endif
+
     <meta property="og:description" content="{{$seo_data['seo_description']}}">
     <meta property="og:type" content="website">
     <meta property="og:image" content="">
       
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S9RSKCL40Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S9RSKCL40Y');
+</script>
       
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="{{url('new/css/bootstrap.min.css')}}">

@@ -20,7 +20,8 @@ class HomeController extends Controller
         $seo_data['seo_title'] = $homepage->seo_title_home;
         $seo_data['seo_description'] = $homepage->seo_des_home;
         $seo_data['keywords'] = $homepage->seo_key_home;
-        return view('home',compact('seo_data','servicelist'));
+        $canocial ='https://codepin.org';
+        return view('home',compact('seo_data','servicelist','canocial'));
     }
 
     public function about()
@@ -29,7 +30,8 @@ class HomeController extends Controller
         $seo_data['seo_title'] = $homepage->seo_title_about;
         $seo_data['seo_description'] = $homepage->seo_des_about;
         $seo_data['keywords'] = $homepage->seo_key_about;
-        return view('about',compact('seo_data'));
+        $canocial ='https://codepin.org/about';
+        return view('about',compact('seo_data','canocial'));
     }
 
     public function services($slug=null)
@@ -41,6 +43,7 @@ class HomeController extends Controller
             $seo_data['seo_title'] =$servicesCategory->seo_title;
             $seo_data['seo_description'] =$servicesCategory->seo_description;
            $seo_data['keywords'] =$servicesCategory->seo_keyword;
+           $canocial ='https://codepin.org/services/'.$slug;
 
          
 
@@ -49,9 +52,10 @@ class HomeController extends Controller
             $seo_data['seo_title'] =$homepage->seo_title_services;
             $seo_data['seo_description'] =$homepage->seo_des_services;
             $seo_data['keywords'] =$homepage->seo_key_services;
+            $canocial ='https://codepin.org/services';
          
          }
-        return view('services',compact('seo_data','servicesList'));
+        return view('services',compact('seo_data','servicesList','canocial'));
     }
 
     public function servicesDetails($slug=null)
@@ -61,7 +65,8 @@ class HomeController extends Controller
         $seo_data['seo_title'] =$servicesData->seo_title;
         $seo_data['seo_description'] =$servicesData->seo_description;
        $seo_data['keywords'] =$servicesData->seo_keyword;
-        return view('service-details',compact('seo_data','servicesData','servicelist'));
+       $canocial ='https://codepin.org/service-details/'.$slug;
+        return view('service-details',compact('seo_data','servicesData','servicelist','canocial'));
     }
 
     public function blogs($slug=null)
@@ -74,6 +79,7 @@ class HomeController extends Controller
             $seo_data['seo_title'] =$blogCategory->seo_title;
             $seo_data['seo_description'] =$blogCategory->seo_description;
            $seo_data['keywords'] =$blogCategory->seo_keyword;
+           $canocial ='https://codepin.org/blogs/'.$slug;
 
          
 
@@ -82,9 +88,10 @@ class HomeController extends Controller
             $seo_data['seo_title'] =$homepage->seo_title_blog;
             $seo_data['seo_description'] =$homepage->seo_des_blog;
             $seo_data['keywords'] =$homepage->seo_key_blog;
+            $canocial ='https://codepin.org/blogs';
          
          }
-        return view('blogs',compact('title','blogList','seo_data'));
+        return view('blogs',compact('title','blogList','seo_data','canocial'));
     }
 
     public function blogDetails($slug=null)
@@ -97,9 +104,10 @@ class HomeController extends Controller
         $seo_data['seo_title'] =$blogData->seo_title;
         $seo_data['seo_description'] =$blogData->seo_description;
        $seo_data['keywords'] =$blogData->seo_keyword;
+       $canocial ='https://codepin.org/blog-details/'.$slug;
        
            
-        return view('blog-details',compact('title','blogData','blog','seo_data'));
+        return view('blog-details',compact('title','blogData','blog','seo_data','canocial'));
     }
 
 
@@ -109,8 +117,9 @@ class HomeController extends Controller
         $seo_data['seo_title'] = $homepage->seo_title_case;
         $seo_data['seo_description'] = $homepage->seo_des_case;
         $seo_data['keywords'] = $homepage->seo_key_case;
+        $canocial = 'https://codepin.org/casestudies';
 
-        return view('casestudies',compact('seo_data'));
+        return view('casestudies',compact('seo_data','canocial'));
     }
 
 
@@ -120,7 +129,8 @@ class HomeController extends Controller
         $seo_data['seo_title'] = $homepage->seo_title_contact;
         $seo_data['seo_description'] = $homepage->seo_des_contact;
         $seo_data['keywords'] = $homepage->seo_key_contact;
-        return view('contact',compact('seo_data'));
+        $canocial = 'https://codepin.org/contact';
+        return view('contact',compact('seo_data','canocial'));
     }
 
     public function contactPost(Request $request)    
