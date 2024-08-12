@@ -8,6 +8,7 @@ use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
 use \App\Models\Contact;
 
+
 class ContactController extends AdminController
 {
     /**
@@ -34,6 +35,9 @@ class ContactController extends AdminController
         $grid->column('subject', __('Subject'));
         $grid->column('budget', __('Budget'));
         $grid->column('message', __('Message'));
+        $grid->column('image', __('Image'))->display(function ($image) {
+            return '<img src="' . asset('uploads/' . $image) . '" style="max-height:100px;max-width:100px"/>';
+        });
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -72,14 +76,17 @@ class ContactController extends AdminController
     protected function form()
     {
         $form = new Form(new Contact());
+        
 
         $form->text('name', __('Name'));
         $form->email('email', __('Email'));
+        $form->image('image', __('File'));
         $form->text('company', __('Company'));
         $form->text('company_website', __('Company website'));
         $form->text('subject', __('Subject'));
         $form->text('budget', __('Budget'));
         $form->text('message', __('Message'));
+        
 
         return $form;
     }

@@ -42,7 +42,7 @@
           
       @endif
     </div>
-          <form action="{{route('contactPost')}}" method="POST">
+          <form action="{{route('contactPost')}}" method="POST" enctype="multipart/form-data">
             @csrf
              <div class="row mrg-0">
                 <div class="col-md-12 pd-5">
@@ -81,6 +81,14 @@
                    <input type="text" name="company_website" placeholder="Company website" class="form-control"  value="{{old('company_website')}}">
                    <span class="text-danger">
                      @error('company_website')
+                        {{$message}}
+                     @enderror
+                   </span>
+                </div>
+                <div class="col-md-6 pd-5">
+                   <input type="file" name="image"  class="form-control"  >
+                   <span class="text-danger">
+                     @error('image')
                         {{$message}}
                      @enderror
                    </span>

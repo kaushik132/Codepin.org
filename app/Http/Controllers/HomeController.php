@@ -144,6 +144,7 @@ class HomeController extends Controller
             'subject' => "required",
             'budget' => "required",
             'message' => "required",
+            'image' => "required",
          
           ], [], 
         [
@@ -155,6 +156,7 @@ class HomeController extends Controller
             'subject' => "Subject",
             'budget' => "Budget",
             'message' => "Message",
+            'image' => "File",
           
          
         ]);
@@ -169,6 +171,14 @@ class HomeController extends Controller
   $contact_obj->subject=$request->subject;
   $contact_obj->budget=$request->budget;
   $contact_obj->message=$request->message;
+  if ($request->hasFile('image')) {
+    $file = $request->file('image'); // Get the uploaded file
+    $extension = $file->getClientOriginalExtension(); // Get the file extension
+    $filename = time() . '.' . $extension; // Create a unique filename
+    $file->move('uploads/', $filename); // Move the file to the uploads directory
+    $contact_obj->image = $filename; // Save the filename in the database
+}
+ 
   $contact_obj->save();
  
   return back()->with('message', 'Form Submitted Successfully!');
@@ -193,6 +203,24 @@ public function search(Request $request){
     ->paginate(4);
 
     return view('blogs',compact('blogList','search','seo_data'));
+}
+
+
+public function sample(){
+    $homepage = Title::first();
+    $seo_data['seo_title'] = $homepage->seo_title_sample;
+    $seo_data['seo_description'] = $homepage->seo_des_sample;
+    $seo_data['keywords'] = $homepage->seo_key_sample;
+    return view('samplefile',compact('seo_data'));
+}
+
+public function refund(){
+    $homepage = Title::first();
+    $seo_data['seo_title'] = $homepage->seo_title_refund;
+    $seo_data['seo_description'] = $homepage->seo_des_refund;
+    $seo_data['keywords'] = $homepage->seo_key_refund;
+    return view('refundpolicy',compact('seo_data'));
+
 }
 
 

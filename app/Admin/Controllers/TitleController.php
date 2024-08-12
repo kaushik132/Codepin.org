@@ -48,6 +48,12 @@ class TitleController extends AdminController
         $grid->column('seo_title_search', __('Seo title search'));
         $grid->column('seo_des_search', __('Seo des search'));
         $grid->column('seo_key_search', __('Seo key search'));
+        $grid->column('seo_title_sample', __('Seo title Sample Page'));
+        $grid->column('seo_des_sample', __('Seo des Sample Page'));
+        $grid->column('seo_key_sample', __('Seo key Sample Page'));
+        $grid->column('seo_title_refund', __('Seo title Refund-policy'));
+        $grid->column('seo_des_refund', __('Seo des Refund-policy'));
+        $grid->column('seo_key_refund', __('Seo key Refund-policy'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -86,6 +92,12 @@ class TitleController extends AdminController
         $show->field('seo_title_search', __('Seo title search'));
         $show->field('seo_des_search', __('Seo des search'));
         $show->field('seo_key_search', __('Seo key search'));
+         $show->field('seo_title_sample', __('Seo title Sample Page'));
+         $show->field('seo_des_sample', __('Seo des Sample Page'));
+         $show->field('seo_key_sample', __('Seo key Sample Page'));
+         $show->field('seo_title_refund', __('Seo title refund-policy'));
+         $show->field('seo_des_refund', __('Seo des refund-policy'));
+         $show->field('seo_key_refund', __('Seo key refund-policy'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -122,6 +134,12 @@ class TitleController extends AdminController
         $form->text('seo_title_search', __('Seo title search'));
         $form->textarea('seo_des_search', __('Seo des search'));
         $form->textarea('seo_key_search', __('Seo key search'));
+        $form->text('seo_title_sample', __('Seo title Sample page'));
+        $form->textarea('seo_des_sample', __('Seo des Sample page'));
+        $form->textarea('seo_key_sample', __('Seo key Sample page'));
+        $form->text('seo_title_refund', __('Seo title Refund Policy'));
+        $form->textarea('seo_des_refund', __('Seo des Refund Policy'));
+        $form->textarea('seo_key_refund', __('Seo key Refund Policy'));
 
         return $form;
     }
