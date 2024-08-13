@@ -18,5 +18,6 @@ Route::group([
     $router->resource('titles', TitleController::class);
     $router->resource('service-categories', ServiceCategoryController::class);
     $router->resource('services', ServiceController::class);
+    $router->resource('samples', SampleController::class);
 
 });
